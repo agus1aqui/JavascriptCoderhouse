@@ -96,7 +96,7 @@ function sumar(precioBase, precioColores, precioLlantas, precioIluminacion) {
 }
 
 function mostrar(mensaje) {
-    console.log("USD " + mensaje);
+    alert("Costo total: USD " + mensaje);
 }
 
 const precioSeleccionadoColores = precioColores[seleccionColores];
@@ -104,3 +104,6 @@ const precioSeleccionadoLlantas = precioLlantas[seleccionLlantas];
 const precioSelecionadoIluminacion = precioIluminacion[seleccionIluminacion];
 const resultado = sumar(precioBase, precioSeleccionadoColores, precioSeleccionadoLlantas, precioSelecionadoIluminacion);
 mostrar(resultado);
+
+
+

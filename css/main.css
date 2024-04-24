@@ -1,0 +1,24 @@
+main img {
+  width: 100px;
+  height: 100px;
+}
+
+nav h1 {
+  font-size: 40px;
+}
+
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.cards img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/*# sourceMappingURL=main.css.map */
