@@ -101,3 +101,4 @@ function sumarPrecios(precioBase, precioColor, precioLlantas, precioIluminacion)
 }
 const precioTotal = sumarPrecios(precioBase, preciosColores, preciosLlantas, preciosIluminacion);
 alert("El precio total es: $" + precioTotal);
+//corregir precios
