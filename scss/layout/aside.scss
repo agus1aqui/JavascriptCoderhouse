@@ -1,0 +1,61 @@
+aside {
+    padding: 20px;
+    overflow-y: auto;
+
+    .card {
+        border: 1px solid black;
+        padding: 5px;
+        border-radius: 10px;
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        //titulos
+
+        h3 {
+            font-size: 24px;
+        }
+
+        h4 {
+            font-size: 16px;
+        }
+
+
+        .colors {
+            width: 100px;
+            height: 50px;
+            margin: 2px;
+            border-radius: 10px;
+            transition: border 0.3s ease-in-out;
+        }
+
+        .colors:hover {
+            border: 1px solid black;
+
+        }
+
+        .colors.negro {
+            background-color: #000000;
+        }
+
+        .colors.gris {
+            background-color: #CCCCCC;
+        }
+
+        .colors.azul {
+            background-color: #00194B;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+    }
+}
