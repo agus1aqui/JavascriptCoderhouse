@@ -55,6 +55,7 @@ aside .card {
   border: 1px solid black;
   padding: 5px;
   border-radius: 10px;
+  margin-bottom: 5px;
 }
 aside .card .box {
   display: flex;
@@ -62,11 +63,20 @@ aside .card .box {
   justify-content: center;
   align-items: center;
 }
+aside .card .flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
 aside .card h3 {
   font-size: 24px;
 }
 aside .card h4 {
   font-size: 16px;
+}
+aside .card input {
+  width: 50px;
 }
 aside .card .colors {
   width: 100px;
@@ -76,7 +86,7 @@ aside .card .colors {
   transition: border 0.3s ease-in-out;
 }
 aside .card .colors:hover {
-  border: 1px solid black;
+  border: 5px solid black;
 }
 aside .card .colors.negro {
   background-color: #000000;
@@ -87,19 +97,20 @@ aside .card .colors.gris {
 aside .card .colors.azul {
   background-color: #00194B;
 }
-aside .card .flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+aside .card .imgProduct img {
+  width: 100px;
+}
+aside .card .imgProduct img {
+  width: 100px;
 }
 
 footer {
   position: absolute;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   bottom: 20px;
-  background-color: aqua;
+  background: rgba(215, 215, 215, 0.6);
   width: 100%;
   padding-left: 100px;
   padding-right: 100px;

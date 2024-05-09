@@ -2,8 +2,9 @@ footer {
     position: absolute;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     bottom: 20px;
-    background-color: aqua;
+    background: rgba(215, 215, 215, 0.60);
     width: 100%;
     padding-left: 100px;
     padding-right: 100px;

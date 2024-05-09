@@ -3,9 +3,11 @@ aside {
     overflow-y: auto;
 
     .card {
+        //general
         border: 1px solid black;
         padding: 5px;
         border-radius: 10px;
+        margin-bottom: 5px;
 
         .box {
             display: flex;
@@ -14,9 +16,14 @@ aside {
             align-items: center;
         }
 
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
 
         //titulos
-
         h3 {
             font-size: 24px;
         }
@@ -25,6 +32,13 @@ aside {
             font-size: 16px;
         }
 
+        input {
+            width: 50px;
+        }
+    }
+
+    .card {
+        //colores
 
         .colors {
             width: 100px;
@@ -35,7 +49,7 @@ aside {
         }
 
         .colors:hover {
-            border: 1px solid black;
+            border: 5px solid black;
 
         }
 
@@ -50,12 +64,25 @@ aside {
         .colors.azul {
             background-color: #00194B;
         }
+    }
 
-        .flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+    .card {
+
+        //llantas
+        .imgProduct {
+            img {
+                width: 100px;
+            }
+        }
+    }
+
+    .card {
+
+        //luces
+        .imgProduct {
+            img {
+                width: 100px;
+            }
         }
     }
 }
