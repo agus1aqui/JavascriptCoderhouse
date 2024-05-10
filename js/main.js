@@ -1,104 +1,219 @@
-//arrays
 //colores
-const nombresColores = ["Negro Jet Metalizado", "Gris GT", "Azul Genciana Metalizado"];
-const preciosColores = [5018.00, 4060.00, 5522.00];
-//const disponibilidad??
-//llantas
-const nombresLlantas = ["Llantas Carrera de 19 y 20 pulgadas", "Llantas Carrera Classic de 20 y 21 pulgadas", "Llantas Turbo de 20 y 21 pulgadas"];
-const preciosLlantas = [0.00, 8900.00, 9500.00];
-//iluminacion
-const nombresIluminacion = ["Faros principales LED Dynamic Light System Plus", "Faros principales ED Matrix Dynamic Light System Plus", "Faros principales LED tintados Matrix Beam Dynamic Light System Plus"];
-const preciosIluminacion = [2000.00, 5000.00, 14000.00];
-//precio base
-const precioBase = 300000;
-
-
-//clases
-/*
-                    no veo la forma de integrar las clases si uso arrays
-class Items{
-    constructor(nombre, precio){
+class ProductoColores {
+    constructor(nombre, precio, disponibilidad) {
         this.nombre = nombre
         this.precio = precio
-        //disponibilidad?
-        //description??
+        this.disponibilidad = disponibilidad
     }
 }
-const color1 = new Items ("Negro Jet Metalizado", 5018.00);
-const color2 = new Items ("Gris GT", 4060.00);
-const color3 = new Items ("Azul Genciana Metalizado", 5522.00);
-*/
-
-
-// menu colores
-function mostrarSeleccionColor() {
-    let seleccion = parseInt(prompt("Elige un color:\n1. Negro Jet Metalizado\n2. Gris GT\n3. Azul Genciana Metalizado"));
-    if (seleccion >= 1 && seleccion <= nombresColores.length) {
-        return seleccion - 1;
-    }
-    else {
-        alert("Selección no válida, por favor ingrese nuevamente");
-        return mostrarSeleccionColor();
-    }
-}
-// mostrar seleccion
-function mostrarPrecioColor() {
-    const indiceColorSeleccionado = mostrarSeleccionColor();
-    const nombreColor = nombresColores[indiceColorSeleccionado];
-    const precioColor = preciosColores[indiceColorSeleccionado];
-    alert("El precio del color seleccionado (" + nombreColor + ") es: $" + precioColor);
-}
-
-
-
-
-//menu llantas 
-function mostrarSeleccionLlantas() {
-    let seleccion = parseInt(prompt("Elige unas llantas:\n1. Llantas Carrera de 19 y 20 pulgadas\n2. Llantas Carrera Classic de 20 y 21 pulgadas\n3. Llantas Turbo de 20 y 21 pulgadas"));
-    if (seleccion >= 1 && seleccion <= nombresLlantas.length) {
-        return seleccion - 1;
+//funciones
+function agregarProductoCarrito(ProductoColores) {
+    const indiceProductoCarrito = carrito.findIndex((el) => {
+        return el.nombre === ProductoColores.nombre;
+    });
+    if (indiceProductoCarrito === -1) {
+        carrito.push({
+            nombre: ProductoColores.nombre,
+            precio: ProductoColores.precio,
+            disponibilidad: ProductoColores.disponibilidad,
+            cantidad: 1
+        });
     } else {
-        alert("Selección no válida, por favor ingrese nuevamente");
-        return mostrarSeleccionLlantas();
+        carrito[indiceProductoCarrito].cantidad++;
+    }
+    console.log(carrito);
+}
+function renderizarColores(colores) {
+    contenedorColores.innerHTML = "";
+
+    for (const ProductoColores of colores) {
+
+        const div = document.createElement("div");
+        div.className = "productoColores";
+        div.innerHTML = `<h4>${ProductoColores.nombre}`;
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = "checkboxValue";
+        input.addEventListener('change', function () {
+            if (input.checked) {
+                console.log('La checkbox está marcada.');
+                agregarProductoCarrito(ProductoColores);
+            } else {
+                console.log('La checkbox está desmarcada.');
+            }
+        });
+
+        div.append(input);
+        contenedorColores.append(div)
     }
 }
-function mostrarPrecioLlantas() {
-    const indiceLlantasSeleccionadas = mostrarSeleccionLlantas();
-    const nombreLlantas = nombresLlantas[indiceLlantasSeleccionadas];
-    const precioLlantas = preciosLlantas[indiceLlantasSeleccionadas];
-    alert("El precio de las llantas seleccionadas (" + nombreLlantas + ") es: $" + precioLlantas);
+//inicio programa
+const contenedorColores = document.getElementById("contenedorColores");
+const colores = [
+    new ProductoColores("Negro Jet Metalizado", 5018, 10),
+    new ProductoColores("Gris GT", 4060, 0),
+    new ProductoColores("Azul Genciana Metalizado", 5522, 3),
+];
+renderizarColores(colores);
+
+
+
+
+
+
+
+
+
+
+//llantas
+class ProductoLlantas {
+    constructor(nombre, precio, disponibilidad) {
+        this.nombre = nombre
+        this.precio = precio
+        this.disponibilidad = disponibilidad
+    }
 }
-
-
-
-
-// menu iluminacion
-function mostrarSeleccionIluminacion() {
-    let seleccion = parseInt(prompt("Elige una opción de iluminación:\n1. Faros principales LED Dynamic Light System Plus\n2. Faros principales ED Matrix Dynamic Light System Plus\n3. Faros principales LED tintados Matrix Beam Dynamic Light System Plus"));
-    if (seleccion >= 1 && seleccion <= nombresIluminacion.length) {
-        return seleccion - 1;
+//funciones
+function agregarProductoCarrito(ProductoLlantas) {
+    const indiceProductoCarrito = carrito.findIndex((el) => {
+        return el.nombre === ProductoLlantas.nombre;
+    });
+    if (indiceProductoCarrito === -1) {
+        carrito.push({
+            nombre: ProductoLlantas.nombre,
+            precio: ProductoLlantas.precio,
+            disponibilidad: ProductoLlantas.disponibilidad,
+            cantidad: 1
+        });
     } else {
-        alert("Selección no válida, por favor ingrese nuevamente");
-        return mostrarSeleccionIluminacion();
+        carrito[indiceProductoCarrito].cantidad++;
+    }
+    console.log(carrito);
+}
+function renderizarLlantas(llantas) {
+    contenedorLlantas.innerHTML = "";
+
+    for (const ProductoLlantas of llantas) {
+        const div = document.createElement("div");
+        div.className = "productoLlantas";
+        div.innerHTML = `<h4>${ProductoLlantas.nombre}`;
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = "checkboxValue";
+        input.addEventListener('change', function () {
+            if (input.checked) {
+                console.log('La checkbox está marcada.');
+                agregarProductoCarrito(ProductoLlantas);
+            } else {
+                console.log('La checkbox está desmarcada.');
+            }
+        });
+
+
+        div.append(input);
+        contenedorLlantas.append(div)
     }
 }
-function mostrarPrecioIluminacion() {
-    const indiceIluminacionSeleccionada = mostrarSeleccionIluminacion();
-    const nombreIluminacion = nombresIluminacion[indiceIluminacionSeleccionada];
-    const precioIluminacion = preciosIluminacion[indiceIluminacionSeleccionada];
-    alert("El precio de la iluminación seleccionada (" + nombreIluminacion + ") es: $" + precioIluminacion);
+//inicio programa
+const contenedorLlantas = document.getElementById("contenedorLlantas");
+const llantas = [
+    new ProductoLlantas("Llantas Carrera de 19 y 20 pulgadas (Equipamiento de serie)", 0, 200),
+    new ProductoLlantas(`Llantas Carrera "Classic" de 20 y 21 pulgadas`, 8900, 10),
+    new ProductoLlantas("Llantas Turbo de 20 y 21 pulgadas", 9500, 5),
+];
+renderizarLlantas(llantas)
+
+
+
+
+
+
+
+
+//luces
+class ProductoLuces {
+    constructor(nombre, precio, disponibilidad) {
+        this.nombre = nombre
+        this.precio = precio
+        this.disponibilidad = disponibilidad
+    }
+}
+//funciones
+function agregarProductoCarrito(ProductoLuces) {
+    const indiceProductoCarrito = carrito.findIndex((el) => {
+        return el.nombre === ProductoLuces.nombre;
+    });
+    if (indiceProductoCarrito === -1) {
+        carrito.push({
+            nombre: ProductoLuces.nombre,
+            precio: ProductoLuces.precio,
+            disponibilidad: ProductoLuces.disponibilidad,
+            cantidad: 1
+        });
+    } else {
+        carrito[indiceProductoCarrito].cantidad++;
+    }
+    console.log(carrito);
+}
+function renderizarLuces(luces) {
+    contenedorLuces.innerHTML = "";
+
+    for (const ProductoLuces of luces) {
+        const div = document.createElement("div");
+        div.className = "productoLuces";
+        div.innerHTML = `<h4>${ProductoLuces.nombre}`;
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = "checkboxValue";
+        input.addEventListener('change', function () {
+            if (input.checked) {
+                console.log('La checkbox está marcada.');
+                agregarProductoCarrito(ProductoLuces);
+            } else {
+                console.log('La checkbox está desmarcada.');
+            }
+        });
+
+
+        div.append(input);
+        contenedorLuces.append(div)
+    }
+}
+//inicio programa
+const contenedorLuces = document.getElementById("contenedorLuces");
+const luces = [
+    new ProductoLuces("Faros principales LED Dynamic Light System Plus", 2000, 20),
+    new ProductoLuces("Faros principales ED Matrix Dynamic Light System Plus", 5000, 8),
+    new ProductoLuces("Faros principales LED tintados Matrix Beam Dynamic Light System Plus", 14000, 1),
+];
+renderizarLuces(luces)
+
+
+
+
+
+
+
+
+
+//carrito
+let carrito = [];
+
+function obtenerProductoLS() {
+    const carritoLS = JSON.parse(localStorage.getItem("ProductoColores", "ProductoLlantas", "ProductoLuces"));
+    if (carritoLS) {
+        carrito = carritoLS;
+    }
+    renderizarCarrito(carrito);
+    guardarLS();
+}
+function guardarLS(){Q
+    const json = JSON.stringify(carrito);
+    localStorage.setItem(json);
 }
 
+obtenerProductoLS();
 
-mostrarPrecioColor();
-mostrarPrecioLlantas();
-mostrarPrecioIluminacion();
-
-//suma
-function sumarPrecios(precioBase, precioColor, precioLlantas, precioIluminacion) {
-    const totalProductos = precioColor + precioLlantas + precioIluminacion;
-    return precioBase + totalProductos;
-}
-const precioTotal = sumarPrecios(precioBase, preciosColores, preciosLlantas, preciosIluminacion);
-alert("El precio total es: $" + precioTotal);
-//corregir precios
