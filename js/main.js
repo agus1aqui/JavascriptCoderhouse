@@ -196,6 +196,14 @@ renderizarLuces(luces)
 
 
 
+function renderizarCarrito(carrito) {
+    const div = document.createElement("div");
+    div.className = "contenedor";
+    div.innerHTML = `<p>${producto.id}</p>`
+    contenedorCarrito.append(div)
+
+    console.log("en renderizarCarrito: ", carrito);
+}
 
 
 
@@ -210,9 +218,9 @@ function obtenerProductoLS() {
     renderizarCarrito(carrito);
     guardarLS();
 }
-function guardarLS(){Q
+function guardarLS() {
     const json = JSON.stringify(carrito);
-    localStorage.setItem(json);
+    localStorage.setItem("carrito", json);
 }
 
 obtenerProductoLS();
