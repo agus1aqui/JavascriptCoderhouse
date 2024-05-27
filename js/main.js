@@ -1,205 +1,111 @@
-//colores
-class ProductoColores {
-    constructor(nombre, precio, disponibilidad) {
-        this.nombre = nombre
-        this.precio = precio
-        this.disponibilidad = disponibilidad
-    }
-}
-//funciones
-function agregarProductoCarrito(ProductoColores) {
-    const indiceProductoCarrito = carrito.findIndex((el) => {
-        return el.nombre === ProductoColores.nombre;
-    });
-    if (indiceProductoCarrito === -1) {
-        carrito.push({
-            nombre: ProductoColores.nombre,
-            precio: ProductoColores.precio,
-            disponibilidad: ProductoColores.disponibilidad,
-            cantidad: 1
-        });
-    } else {
-        carrito[indiceProductoCarrito].cantidad++;
-    }
-    console.log(carrito);
-}
-function renderizarColores(colores) {
-    contenedorColores.innerHTML = "";
-
-    for (const ProductoColores of colores) {
-
-        const div = document.createElement("div");
-        div.className = "productoColores";
-        div.innerHTML = `<h4>${ProductoColores.nombre}`;
-
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.value = "checkboxValue";
-        input.addEventListener('change', function () {
-            if (input.checked) {
-                console.log('La checkbox está marcada.');
-                agregarProductoCarrito(ProductoColores);
-            } else {
-                console.log('La checkbox está desmarcada.');
-            }
-        });
-
-        div.append(input);
-        contenedorColores.append(div)
-    }
-}
-//inicio programa
-const contenedorColores = document.getElementById("contenedorColores");
-const colores = [
-    new ProductoColores("Negro Jet Metalizado", 5018, 10),
-    new ProductoColores("Gris GT", 4060, 0),
-    new ProductoColores("Azul Genciana Metalizado", 5522, 3),
+const productos = [
+    {
+        id: 1,
+        categoria: "colores",
+        nombre: "Negro Jet Metalizado",
+        precio: 5018,
+        disponibilidad: 10,
+        img: "./imagenes/colores1.png"
+    },
+    {
+        id: 2,
+        categoria: "colores",
+        nombre: "Gris GT",
+        precio: 4060,
+        disponibilidad: 0,
+        img: "./imagenes/colores2.png",
+    },
+    {
+        id: 3,
+        categoria: "colores",
+        nombre: "Azul Genciana Metalizado",
+        precio: 5522,
+        disponibilidad: 3,
+        img: "./imagenes/colores3.png",
+    },
+    {
+        id: 4,
+        categoria: "llantas",
+        nombre: "Llantas Carrera de 19 y 20 pulgadas (Equipamiento de serie)",
+        precio: 0,
+        disponibilidad: 200,
+        img: "./imagenes/llantas1.png",
+    },
+    {
+        id: 5,
+        categoria: "llantas",
+        nombre: `Llantas Carrera "Classic" de 20 y 21 pulgadas`,
+        precio: 8900,
+        disponibilidad: 10,
+        img: "./imagenes/llantas2.png",
+    },
+    {
+        id: 6,
+        categoria: "llantas",
+        nombre: "Llantas Turbo de 20 y 21 pulgadas",
+        precio: 9500,
+        disponibilidad: 5,
+        img: "./imagenes/llantas3.png",
+    },
+    {
+        id: 7,
+        categoria: "luces",
+        nombre: "Faros principales LED Dynamic Light System Plus",
+        precio: 2000,
+        disponibilidad: 20,
+        img: "./imagenes/luces1.png",
+    },
+    {
+        id: 8,
+        categoria: "luces",
+        nombre: "Faros principales ED Matrix Dynamic Light System Plus",
+        precio: 5000,
+        disponibilidad: 8,
+        img: "./imagenes/luces2.png",
+    },
+    {
+        id: 9,
+        categoria: "luces",
+        nombre: "Faros principales LED tintados Matrix Beam Dynamic Light System Plus",
+        precio: 14000,
+        disponibilidad: 1,
+        img: "./imagenes/luces3.png",
+    },
 ];
-renderizarColores(colores);
 
 
 
-
-
-
-
-
-
-
-//llantas
-class ProductoLlantas {
-    constructor(nombre, precio, disponibilidad) {
-        this.nombre = nombre
-        this.precio = precio
-        this.disponibilidad = disponibilidad
-    }
-}
-//funciones
-function agregarProductoCarrito(ProductoLlantas) {
-    const indiceProductoCarrito = carrito.findIndex((el) => {
-        return el.nombre === ProductoLlantas.nombre;
-    });
-    if (indiceProductoCarrito === -1) {
-        carrito.push({
-            nombre: ProductoLlantas.nombre,
-            precio: ProductoLlantas.precio,
-            disponibilidad: ProductoLlantas.disponibilidad,
-            cantidad: 1
+const contenedorProductos = document.querySelector("#contenedorProductos");
+console.log(productos);
+const mostrarProductos = (data) => {
+    data.forEach(productos => {
+        const cardProducto = document.createElement("article");
+        cardProducto.setAttribute("id", "tarjetaProducto");
+        cardProducto.innerHTML = `
+    <img class="prodImg" src="${productos.img}" alt="${productos.nombre}">
+    <div class="prodDescripcion">
+        <h5 class="prodNombre">${productos.nombre}</h5>
+        <h5 class-"prodPrecio">${"USD $ " + productos.precio}</h5>
+        <input id="${productos.id}" class="inputCompra" type="checkbox">SELECCIONAR</input>
+    </div>
+    `;
+        contenedorProductos.appendChild(cardProducto);
+    })
+    const btnComprar = document.querySelectorAll(".btnCompra");
+    btnComprar.forEach(el => {
+        el.addEventListener("click", (e) => {
+            agregarAlCarrito(e.target.id)
         });
-    } else {
-        carrito[indiceProductoCarrito].cantidad++;
-    }
-    console.log(carrito);
+    })
 }
-function renderizarLlantas(llantas) {
-    contenedorLlantas.innerHTML = "";
-
-    for (const ProductoLlantas of llantas) {
-        const div = document.createElement("div");
-        div.className = "productoLlantas";
-        div.innerHTML = `<h4>${ProductoLlantas.nombre}`;
-
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.value = "checkboxValue";
-        input.addEventListener('change', function () {
-            if (input.checked) {
-                console.log('La checkbox está marcada.');
-                agregarProductoCarrito(ProductoLlantas);
-            } else {
-                console.log('La checkbox está desmarcada.');
-            }
-        });
-
-
-        div.append(input);
-        contenedorLlantas.append(div)
-    }
-}
-//inicio programa
-const contenedorLlantas = document.getElementById("contenedorLlantas");
-const llantas = [
-    new ProductoLlantas("Llantas Carrera de 19 y 20 pulgadas (Equipamiento de serie)", 0, 200),
-    new ProductoLlantas(`Llantas Carrera "Classic" de 20 y 21 pulgadas`, 8900, 10),
-    new ProductoLlantas("Llantas Turbo de 20 y 21 pulgadas", 9500, 5),
-];
-renderizarLlantas(llantas)
-
-
-
-
-
-
-
-
-//luces
-class ProductoLuces {
-    constructor(nombre, precio, disponibilidad) {
-        this.nombre = nombre
-        this.precio = precio
-        this.disponibilidad = disponibilidad
-    }
-}
-//funciones
-function agregarProductoCarrito(ProductoLuces) {
-    const indiceProductoCarrito = carrito.findIndex((el) => {
-        return el.nombre === ProductoLuces.nombre;
-    });
-    if (indiceProductoCarrito === -1) {
-        carrito.push({
-            nombre: ProductoLuces.nombre,
-            precio: ProductoLuces.precio,
-            disponibilidad: ProductoLuces.disponibilidad,
-            cantidad: 1
-        });
-    } else {
-        carrito[indiceProductoCarrito].cantidad++;
-    }
-    console.log(carrito);
-}
-function renderizarLuces(luces) {
-    contenedorLuces.innerHTML = "";
-
-    for (const ProductoLuces of luces) {
-        const div = document.createElement("div");
-        div.className = "productoLuces";
-        div.innerHTML = `<h4>${ProductoLuces.nombre}`;
-
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.value = "checkboxValue";
-        input.addEventListener('change', function () {
-            if (input.checked) {
-                console.log('La checkbox está marcada.');
-                agregarProductoCarrito(ProductoLuces);
-            } else {
-                console.log('La checkbox está desmarcada.');
-            }
-        });
-
-
-        div.append(input);
-        contenedorLuces.append(div)
-    }
-}
-//inicio programa
-const contenedorLuces = document.getElementById("contenedorLuces");
-const luces = [
-    new ProductoLuces("Faros principales LED Dynamic Light System Plus", 2000, 20),
-    new ProductoLuces("Faros principales ED Matrix Dynamic Light System Plus", 5000, 8),
-    new ProductoLuces("Faros principales LED tintados Matrix Beam Dynamic Light System Plus", 14000, 1),
-];
-renderizarLuces(luces)
-
-
-
+mostrarProductos(productos);
 
 
 
 function renderizarCarrito(carrito) {
     const div = document.createElement("div");
     div.className = "contenedor";
-    div.innerHTML = `<p>${producto.id}</p>`
+    div.innerHTML = `<p>${productos.id}</p>`
     contenedorCarrito.append(div)
 
     console.log("en renderizarCarrito: ", carrito);
@@ -207,11 +113,10 @@ function renderizarCarrito(carrito) {
 
 
 
-//carrito
 let carrito = [];
 
 function obtenerProductoLS() {
-    const carritoLS = JSON.parse(localStorage.getItem("ProductoColores", "ProductoLlantas", "ProductoLuces"));
+    const carritoLS = JSON.parse(localStorage.getItem("Productos"));
     if (carritoLS) {
         carrito = carritoLS;
     }
@@ -224,4 +129,3 @@ function guardarLS() {
 }
 
 obtenerProductoLS();
-
