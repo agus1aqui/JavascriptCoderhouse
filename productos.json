@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Negro Jet Metalizado",
+        "price": 5018,
+        "stock": 10,
+        "image": "./imagenes/black.png"
+    },
+    {
+        "name": "Gris GT",
+        "price": 4060,
+        "stock": 5,
+        "image": "./imagenes/grey.png"
+    },
+    {
+        "name": "Azul Geneciana Metalizado",
+        "price": 5522,
+        "stock": 1,
+        "image": "./imagenes/blue.png"
+    },
+    {
+        "name": "Llantas Carrera de 19 y 20 pulgadas (equipamiento de serie)",
+        "price": 0,
+        "stock": 100,
+        "image": "./imagenes/llantas1.png"
+    },
+    {
+        "name": "Llantas Carrera `Classic` de 20 y 21 pulgadas",
+        "price": 8900,
+        "stock": 0,
+        "image": "./imagenes/llantas2.png"
+    },
+    {
+        "name": "Llantas Turbo de 20 y 21 pulgadas",
+        "price": 9500,
+        "stock": 2,
+        "image": "./imagenes/llantas3.png"
+    },
+    {
+        "name": "Faros principales LED Dynamic Light System Plus",
+        "price": 2000,
+        "stock": 10,
+        "image": "./imagenes/luces1.png"
+    },
+    {
+        "name": "Faros principales ED Matrix Dynamic Light System Plus",
+        "price": 5000,
+        "stock": 3,
+        "image": "./imagenes/luces2.png"
+    },
+    {
+        "name": "Faros principales LED tintados Matrix Beam Dynamic Light System Plus",
+        "price": 14000,
+        "stock": 4,
+        "image": "./imagenes/luces3.png"
+    }
+]

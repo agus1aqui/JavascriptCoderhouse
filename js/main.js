@@ -35,7 +35,7 @@ const displayProductos = () => {
 const displayCarrito = () => {
     const carritoDiv = document.getElementById('carritoCard');
     carritoDiv.innerHTML = '<h2>Carrito</h2>';
-    if (carrito.length === 0) { 
+    if (carrito.length === 0) {
         carritoDiv.innerHTML += '<p>Tu carrito esta vacio</p>';
     } else {
         carrito.forEach((item, index) => {
@@ -73,3 +73,13 @@ const eliminarCarrito = (index) => {
 };
 displayProductos();
 displayCarrito();
+
+
+
+fetch("./productos.json")
+    .then((response) => {
+        return response.json();
+    })
+    .then((responseJson) => {
+        console.log(responseJson);
+    });
